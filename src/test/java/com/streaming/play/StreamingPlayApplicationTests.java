@@ -1,4 +1,4 @@
-package com.streaming_play;
+package com.streaming.play;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
