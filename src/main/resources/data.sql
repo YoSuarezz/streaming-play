@@ -19,7 +19,7 @@ VALUES ('El Conjuro', 112, 'TERROR', 3.0, '2013-07-19', 'D')
     ON CONFLICT (titulo) DO NOTHING;
 
 INSERT INTO streaming_play_peliculas (titulo, duracion, genero, clasificacion, fecha_estreno, estado)
-VALUES ('Coco', 105, 'ANIMADA', 4.7, '2017-10-27', 'D')
+VALUES ('Coco', 105, 'ANIMADA', 4.7, '2017-10-27', 'N')
     ON CONFLICT (titulo) DO NOTHING;
 
 INSERT INTO streaming_play_peliculas (titulo, duracion, genero, clasificacion, fecha_estreno, estado)
