@@ -2,6 +2,7 @@ package com.streaming.play.web.controller;
 
 import com.streaming.play.domain.dto.MovieDto;
 import com.streaming.play.domain.service.MovieService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +20,18 @@ public class MovieController {
     }
 
     @GetMapping
-    public List<MovieDto> getMovies() {
-        return movieService.getAll();
+    public ResponseEntity<List<MovieDto>> getMovies() {
+        return ResponseEntity.ok(movieService.getAll());
     }
 
     @GetMapping("/{id}")
-    public MovieDto getById(@PathVariable Long id) {
-        return movieService.getById(id);
+    public ResponseEntity<MovieDto> getById(@PathVariable Long id) {
+        MovieDto movieDto = movieService.getById(id);
+
+        if (movieDto == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(movieDto);
+        }
     }
 }
