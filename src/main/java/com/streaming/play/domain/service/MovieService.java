@@ -1,6 +1,7 @@
 package com.streaming.play.domain.service;
 
 import com.streaming.play.domain.dto.MovieDto;
+import com.streaming.play.domain.dto.UpdateMovieDto;
 import com.streaming.play.domain.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,13 @@ public class MovieService {
 
     public MovieDto add(MovieDto movieDto) {
         return movieRepository.save(movieDto);
+    }
+
+    public MovieDto update(long id, UpdateMovieDto updateMovieDto) {
+        return movieRepository.update(id, updateMovieDto);
+    }
+
+    public void deleteById(long id) {
+        this.movieRepository.delete(id);
     }
 }

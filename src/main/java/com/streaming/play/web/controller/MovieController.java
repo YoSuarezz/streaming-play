@@ -1,6 +1,7 @@
 package com.streaming.play.web.controller;
 
 import com.streaming.play.domain.dto.MovieDto;
+import com.streaming.play.domain.dto.UpdateMovieDto;
 import com.streaming.play.domain.service.MovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,5 +37,17 @@ public class MovieController {
     @PostMapping
     public ResponseEntity<MovieDto> add(@RequestBody MovieDto movieDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(movieService.add(movieDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MovieDto> update(@PathVariable long id,@RequestBody UpdateMovieDto updateMovieDto) {
+
+        return ResponseEntity.ok(movieService.update(id, updateMovieDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable long id) {
+        movieService.deleteById(id);
+        return ResponseEntity.ok("Movie deleted successfully");
     }
 }
