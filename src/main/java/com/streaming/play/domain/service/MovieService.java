@@ -3,6 +3,7 @@ package com.streaming.play.domain.service;
 import com.streaming.play.domain.dto.MovieDto;
 import com.streaming.play.domain.dto.UpdateMovieDto;
 import com.streaming.play.domain.repository.MovieRepository;
+import dev.langchain4j.agent.tool.Tool;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
+    @Tool("Busca todas las peliculas que existan dentro de la plataforma")
     public List<MovieDto> getAll() {
         return movieRepository.getAll();
     }
