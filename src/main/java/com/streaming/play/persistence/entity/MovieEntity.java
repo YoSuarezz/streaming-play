@@ -31,6 +31,14 @@ public class MovieEntity {
     @Column(nullable = false, length = 1)
     private String estado;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTitulo() {
         return titulo;
     }

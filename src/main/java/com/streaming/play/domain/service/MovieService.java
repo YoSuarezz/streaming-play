@@ -21,4 +21,8 @@ public class MovieService {
     public MovieDto getById(long id) {
         return movieRepository.getById(id);
     }
+
+    public MovieDto add(MovieDto movieDto) {
+        return movieRepository.save(movieDto);
+    }
 }
