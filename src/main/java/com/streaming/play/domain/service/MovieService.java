@@ -17,4 +17,8 @@ public class MovieService {
     public List<MovieDto> getAll() {
         return movieRepository.getAll();
     }
+
+    public MovieDto getById(long id) {
+        return movieRepository.getById(id);
+    }
 }
