@@ -5,6 +5,11 @@ import com.streaming.play.domain.dto.SuggestRequestDto;
 import com.streaming.play.domain.dto.UpdateMovieDto;
 import com.streaming.play.domain.service.MovieService;
 import com.streaming.play.domain.service.StreamingPlayAiService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
+@Tag(name = "Movies", description = "Operations about movies of StreamingPlay")
 public class MovieController {
     private final MovieService movieService;
     private final StreamingPlayAiService aiService;
@@ -29,7 +35,15 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MovieDto> getById(@PathVariable Long id) {
+    @Operation(
+            summary = "Get a movie by its id",
+            description = "Returns a single movie that matches the provided id",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Movie found"),
+                    @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content)
+            }
+    )
+    public ResponseEntity<MovieDto> getById(@Parameter(description = "Id by movie to return", example = "9") @PathVariable long id) {
         MovieDto movieDto = movieService.getById(id);
 
         if (movieDto == null) {
