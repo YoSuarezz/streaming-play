@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.streaming'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 description = 'Construcción de la API de una plataforma de streaming usando Spring'
 
 java {
@@ -40,6 +40,9 @@ dependencies {
 
     // Doc OpenAPI
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
+
+    // Docker
+    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
 }
 
 tasks.named('test') {
